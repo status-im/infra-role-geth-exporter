@@ -4,6 +4,14 @@ This role configures [`geth_exporter`](https://github.com/status-im/geth_exporte
 
 The image used by default is [statusteam/geth_exporter:latest](https://hub.docker.com/r/statusteam/geth_exporter).
 
+# Installation
+
+```yaml
+- name: infra-role-geth-exporter
+  src: git+git@github.com:status-im/infra-role-geth-exporter.git
+  scm: git
+```
+
 # Configuration
 
 The main thing to change is name of container to connect to and IPC path:
