@@ -8,7 +8,7 @@ The image used by default is [statusteam/geth_exporter:latest](https://hub.docke
 
 The main thing to change is name of container to connect to and IPC path:
 ```yaml
-geth_source_cont_name:
+geth_source_cont_name: 'my-geth-container'
 ```
 
 The rest of the defaults should be fine, but if you want to change anything change those:
