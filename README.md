@@ -1,6 +1,6 @@
 # Description
 
-This role configures [`geth_exporter`](https://github.com/status-im/geth_exporter), a metrics exporter for ([go-ethereum](https://github.com/ethereum/go-ethereum)).
+This role configures [`geth_exporter`](https://github.com/status-im/geth_exporter), a metrics exporter for [go-ethereum](https://github.com/ethereum/go-ethereum).
 
 The image used by default is [statusteam/geth_exporter:latest](https://hub.docker.com/r/statusteam/geth_exporter).
 
