@@ -9,7 +9,7 @@
         address: '{{ geth_expo_consul_addr }}'
         tags: '{{ geth_expo_consul_tags }}'
         meta:
-          container: '{{ geth_expo_cont_name }}'
+          container: '{{ geth_source_cont_name | mandatory }}'
         checks:
           - id: '{{ geth_expo_consul_name }}'-health
             name: 'geth-exporter healthcheck'

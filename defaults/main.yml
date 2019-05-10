@@ -1,4 +1,9 @@
 ---
+# source container
+geth_source_cont_name: ~
+geth_source_cont_ipc_path: '/data/geth.ipc'
+
+# metrics container settings
 geth_expo_cont_image: statusteam/geth_exporter:latest
 geth_expo_cont_name: geth-exporter
 geth_expo_cont_addr: '0.0.0.0'
@@ -13,6 +18,7 @@ geth_expo_consul_tags:
   - metrics
   - geth
 
+# generic container settings
 cont_state: started
 cont_recreate: false
 cont_restart: false

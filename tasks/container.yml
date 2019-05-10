@@ -10,9 +10,9 @@
     recreate: '{{ cont_recreate }}'
     restart: '{{ cont_restart }}'
     entrypoint: geth_exporter 
-    volumes_from: '{{ cont_name }}'
+    volumes_from: '{{ geth_source_cont_name | mandatory }}'
     command: |
-      -ipc /data/geth.ipc
+      -ipc {{ geth_source_cont_ipc_path }}
       -port 9200
     ports:
       - '{{ geth_expo_cont_port }}:9200/tcp'
