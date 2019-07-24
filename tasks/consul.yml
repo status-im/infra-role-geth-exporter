@@ -4,7 +4,8 @@
   vars:
     consul_config_name: '{{ geth_expo_cont_name | replace("-", "_") }}'
     consul_services:
-      - name: '{{ geth_expo_consul_name }}'
+      - id: '{{ geth_expo_consul_id }}'
+        name: '{{ geth_expo_consul_name }}'
         port: '{{ geth_expo_cont_port }}'
         address: '{{ geth_expo_consul_addr }}'
         tags: '{{ geth_expo_consul_tags }}'

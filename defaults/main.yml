@@ -10,6 +10,7 @@ geth_expo_cont_addr: '0.0.0.0'
 geth_expo_cont_port: 9200
 
 # consul catalog data
+geth_expo_consul_id: 'geth-exporter'
 geth_expo_consul_name: 'geth-exporter'
 geth_expo_consul_addr: '{{ ansible_local.tinc.vpn_ip }}'
 geth_expo_consul_extra_tag: '{{ geth_expo_cont_name }}'
