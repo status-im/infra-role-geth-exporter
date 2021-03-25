@@ -1,25 +1,20 @@
 ---
+geth_expo_service_name: 'geth'
+geth_expo_service_path: '/docker/{{ geth_expo_service_name }}'
+geth_expo_compose_path: '{{ geth_expo_service_path }}/docker-compose.exporter.yml'
+
 # source container
-geth_source_cont_name: ~
-geth_source_cont_ipc_path: '/data/geth.ipc'
+#geth_expo_source_data_path: ~
+#geth_expo_source_cont_name: ~
 
 # metrics container settings
-geth_expo_cont_image: statusteam/geth_exporter:latest
-geth_expo_cont_name: geth-exporter
+geth_expo_cont_tag: 'latest'
+geth_expo_cont_image: 'statusteam/geth_exporter:{{ geth_expo_cont_tag }}'
+geth_expo_cont_name: '{{ geth_expo_service_name }}-exporter'
 geth_expo_cont_addr: '0.0.0.0'
 geth_expo_cont_port: 9200
 
-# consul catalog data
-geth_expo_consul_id: 'geth-exporter'
-geth_expo_consul_name: 'geth-exporter'
-geth_expo_consul_addr: '{{ ansible_local.tinc.vpn_ip }}'
-geth_expo_consul_extra_tag: '{{ geth_expo_cont_name }}'
-geth_expo_consul_tags:
-  - '{{ geth_expo_consul_extra_tag }}'
-  - metrics
-  - geth
-
-# generic container settings
-cont_state: started
-cont_recreate: false
-cont_restart: false
+# general container management
+compose_recreate: 'smart'
+compose_state: 'present'
+compose_restart: false

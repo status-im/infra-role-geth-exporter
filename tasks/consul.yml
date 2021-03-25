@@ -2,17 +2,18 @@
 - name: Create Consul service definition
   include_role: name=consul-service
   vars:
-    consul_config_name: '{{ geth_expo_cont_name | replace("-", "_") }}'
+    consul_config_name: '{{ geth_expo_cont_name }}'
     consul_services:
-      - id: '{{ geth_expo_consul_id }}'
-        name: '{{ geth_expo_consul_name }}'
+      # Prometheus config expects this service name
+      - name: 'geth-exporter'
+        id: '{{ geth_expo_cont_name }}'
         port: '{{ geth_expo_cont_port }}'
-        address: '{{ geth_expo_consul_addr }}'
-        tags: '{{ geth_expo_consul_tags }}'
+        address: '{{ ansible_local.tinc.vpn_ip }}'
+        tags: ['{{ geth_expo_cont_name }}', 'metrics', 'geth']
         meta:
-          container: '{{ geth_source_cont_name | mandatory }}'
+          container: '{{ geth_expo_source_cont_name | mandatory }}'
         checks:
-          - id: '{{ geth_expo_consul_name }}-health'
+          - id: '{{ geth_expo_cont_name }}-health'
             name: 'geth-exporter healthcheck'
             type: http
             http: 'http://localhost:{{ geth_expo_cont_port }}/health'
