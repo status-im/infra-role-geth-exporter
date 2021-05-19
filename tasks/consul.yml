@@ -8,7 +8,7 @@
       - name: 'geth-exporter'
         id: '{{ geth_expo_cont_name }}'
         port: '{{ geth_expo_cont_port }}'
-        address: '{{ ansible_local.tinc.vpn_ip }}'
+        address: '{{ ansible_local.wireguard.vpn_ip }}'
         tags: ['{{ geth_expo_cont_name }}', 'metrics', 'geth']
         meta:
           container: '{{ geth_expo_source_cont_name | mandatory }}'
