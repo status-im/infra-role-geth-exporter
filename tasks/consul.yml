@@ -5,15 +5,15 @@
     consul_config_name: '{{ geth_expo_cont_name }}'
     consul_services:
       # Prometheus config expects this service name
-      - name: 'geth-exporter'
-        id: '{{ geth_expo_cont_name }}'
+      - id:   '{{ geth_expo_cont_name }}'
+        name: '{{ geth_expo_consul_service_name }}'
+        tags: '{{ geth_expo_consul_tags }}'
         port: '{{ geth_expo_cont_port }}'
         address: '{{ ansible_local.wireguard.vpn_ip }}'
-        tags: ['{{ geth_expo_cont_name }}', 'metrics', 'geth']
         meta:
           container: '{{ geth_expo_source_cont_name | mandatory }}'
         checks:
           - id: '{{ geth_expo_cont_name }}-health'
-            name: 'geth-exporter healthcheck'
-            type: http
+            name: '{{ geth_expo_consul_service_name }} healthcheck'
+            type: 'http'
             http: 'http://localhost:{{ geth_expo_cont_port }}/health'
