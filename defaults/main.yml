@@ -27,6 +27,6 @@ geth_expo_consul_extra_tags: []
 geth_expo_consul_tags: '{{ geth_expo_consul_default_tags + geth_expo_consul_extra_tags }}'
 
 # general container management
-compose_recreate: 'smart'
+compose_recreate: 'auto'
 compose_state: 'present'
-compose_restart: false
+compose_pull: 'always'
